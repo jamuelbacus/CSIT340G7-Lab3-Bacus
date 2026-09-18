@@ -18,39 +18,36 @@ const Footer = ({ name, courseCode, section }) => {
   );
 };
 
-const Content = ({ part1, part2, part3 }) => {
+const Content = ({ parts }) => {
   return (
     <div>
-      <Part name={part1.name} exercises={part1.exercises} />
-      <Part name={part2.name} exercises={part2.exercises} />
-      <Part name={part3.name} exercises={part3.exercises} />
+      <Part name={parts[0].name} exercises={parts[0].exercises} />
+      <Part name={parts[1].name} exercises={parts[1].exercises} />
+      <Part name={parts[2].name} exercises={parts[2].exercises} />
     </div>
   );
 };
 
-const Total = ({ part1, part2, part3 }) => {
+const Total = ({ parts }) => {
   return (
-    <p>Number of units {part1.exercises + part2.exercises + part3.exercises}</p>
+    <p>
+      Number of units{" "}
+      {parts[0].exercises + parts[1].exercises + parts[2].exercises}
+    </p>
   );
 };
 
 const App = () => {
   const course = "The Life and Works of Rizal";
 
-  const part1 = {
-    name: "Applications Development and Emerging Technologies",
-    exercises: 3,
-  };
-
-  const part2 = {
-    name: "Information Management 2",
-    exercises: 3,
-  };
-
-  const part3 = {
-    name: "Industry Elective 1",
-    exercises: 3,
-  };
+  const parts = [
+    {
+      name: "Applications Development and Emerging Technologies",
+      exercises: 3,
+    },
+    { name: "Information Management 2", exercises: 3 },
+    { name: "Industry Elective 1", exercises: 3 },
+  ];
 
   const name = "Jamuel Halili Bacus";
   const courseCode = "CSIT340";
@@ -59,8 +56,8 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <Content part1={part1} part2={part2} part3={part3} />
-      <Total part1={part1} part2={part2} part3={part3} />
+      <Content parts={parts} />
+      <Total parts={parts} />
       <Footer name={name} courseCode={courseCode} section={section} />
     </div>
   );
